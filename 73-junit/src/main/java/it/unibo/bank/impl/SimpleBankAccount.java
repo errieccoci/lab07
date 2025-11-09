@@ -39,6 +39,7 @@ public class SimpleBankAccount implements BankAccount {
      */
     @Override
     public void chargeManagementFees(final int id) {
+        System.out.println("errore perche si");
         if (checkUser(id)) {
             this.balance -= MANAGEMENT_FEE;
             resetTransactions();

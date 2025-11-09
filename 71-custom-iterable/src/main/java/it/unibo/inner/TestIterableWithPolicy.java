@@ -4,9 +4,11 @@ import it.unibo.inner.api.IterableWithPolicy;
 import it.unibo.inner.api.Predicate;
 import it.unibo.inner.test.api.Product;
 import it.unibo.inner.test.impl.ProductImpl;
+import it.unibo.inner.api.IterableWithPolicyImp;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import static it.unibo.inner.test.Assertions.assertContentEqualsInOrder;
 
@@ -14,12 +16,13 @@ public class TestIterableWithPolicy {
 
     private TestIterableWithPolicy() {}
 
+
     private static <T> IterableWithPolicy<T> makeIterableWithPolicy(final T[] elements, final Predicate<T> filter) {
-        return null; // TODO: return the implementation of IterableWithPolicy
+       return new IterableWithPolicyImp(elements, filter);
     }
 
     private static <T> IterableWithPolicy<T> makeIterableWithPolicy(final T[] elements) {
-        return null; // TODO: return the implementation of IterableWithPolicy
+        return new IterableWithPolicyImp(elements);
     }
 
     public static void main(final String[] args) {
@@ -39,6 +42,7 @@ public class TestIterableWithPolicy {
         final IterableWithPolicy<String> evenIterable = makeIterableWithPolicy(test1, filterPippoPluto);
         final IterableWithPolicy<String> oddIterable = makeIterableWithPolicy(test1, filterFooBar);
         // Verify the filter application
+        
         assertContentEqualsInOrder(List.of("pippo", "pluto"), evenIterable);
         assertContentEqualsInOrder(List.of("foo", "bar"), oddIterable);
         // Create reject/accept filters
@@ -56,6 +60,7 @@ public class TestIterableWithPolicy {
         final IterableWithPolicy<String> emptyIterable = makeIterableWithPolicy(test1, filterOutAll);
         final IterableWithPolicy<String> allIterable = makeIterableWithPolicy(test1, takeAll);
         assertContentEqualsInOrder(List.of(), emptyIterable);
+
         assertContentEqualsInOrder(List.of("pippo", "pluto", "foo", "bar"), allIterable);
         // Test changes in policy
         final IterableWithPolicy<String> switchPolicy = makeIterableWithPolicy(test1);

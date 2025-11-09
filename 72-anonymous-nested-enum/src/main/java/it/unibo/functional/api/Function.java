@@ -9,6 +9,7 @@ package it.unibo.functional.api;
 @SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface Function<I, O> {
 
+  
     /**
      * Calls the function.
      *
@@ -24,7 +25,11 @@ public interface Function<I, O> {
      * @return A new {@code Function} that implements the identity function with the provided type
      */
     static <T> Function<T, T> identity() {
-        return null;
+        return new Function<>(){
+            public T call(final T input){
+                return input;
+            }
+        };
     }
 
 }

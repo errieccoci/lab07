@@ -27,7 +27,4 @@ Si suggerisce di valutare l'utilizzo di un campo che modella il numero di giorni
 Questa enum *deve* avere un metodo `Month fromString(String)` che, data una stringa di testo, restituisce il `Month`
 che meglio la rappresenta. A tal proposito, si legga con molta attenzione la Javadoc di `MonthSorter`.
 
-Utilizzare questa `enum` come supporto per la costruzione di due classi innestate: `SortByMonthOrder` e `SortByDate`
-che implementano `Comparator<String>` e rappresentano, rispettivamente, un comparatore che ordina delle stringhe
-(interpretandole come mesi) in base al loro ordine nell'anno, ed un comparatore che le ordina invece in base al numero
-di giorni che il mese ha.
+
